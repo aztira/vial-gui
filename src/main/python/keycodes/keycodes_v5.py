@@ -585,6 +585,10 @@ class keycodes_v5:
         "QK_REPEAT_KEY": 0x999c0,
         "QK_ALT_REPEAT_KEY": 0x999c1,
         "MAGIC_TOGGLE_GUI": 0x999c2,
+
+        "QK_CAPS_WORD_TOGGLE": 0x999e,
+        "QK_LAYER_LOCK": 0x999f,
+        "QK_PERSISTENT_DEF_LAYER": 0x99a0,  # Reserve 0x99a0 - 0x99bf.
     }
 
     masked = set()
@@ -601,6 +605,7 @@ for x in range(32):
     keycodes_v5.kc["TT({})".format(x)] = keycodes_v5.kc["QK_LAYER_TAP_TOGGLE"] | x
     keycodes_v5.kc["OSL({})".format(x)] = keycodes_v5.kc["QK_ONE_SHOT_LAYER"] | x
     keycodes_v5.kc["TO({})".format(x)] = keycodes_v5.kc["QK_TO"] | (1 << 4) | x
+    keycodes_v5.kc["PDF({})".format(x)] = keycodes_v5.kc["QK_PERSISTENT_DEF_LAYER"] + x
 
 for x in range(16):
     keycodes_v5.kc["LT{}(kc)".format(x)] = keycodes_v5.kc["QK_LAYER_TAP"] | (((x) & 0xF) << 8)
