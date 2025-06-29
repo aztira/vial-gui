@@ -563,33 +563,28 @@ class keycodes_v5:
         "QMK_LM_MASK": 0xF,
 
         # TODO: these keycodes don't actually exist in v5; we need fake ones here to unbreak the build
-        # TODO: these should be removed after we can move keycodes to be owned by the Keyboard object and support optional/not implemented keycodes
-        "RM_ON": 0x9990,
-        "RM_OFF": 0x9991,
-        "RM_TOGG": 0x9992,
-        "RM_NEXT": 0x9993,
-        "RM_PREV": 0x9994,
-        "RM_HUEU": 0x9995,
-        "RM_HUED": 0x9996,
-        "RM_SATU": 0x9997,
-        "RM_SATD": 0x9998,
-        "RM_VALU": 0x9999,
-        "RM_VALD": 0x999a,
-        "RM_SPDU": 0x999b,
-        "RM_SPDD": 0x999c,
-        "QK_REBOOT": 0x999d,
-
-        "QK_CAPS_WORD_TOGGLE": 0x999e,
-        "QK_LAYER_LOCK": 0x999f,
-        "QK_PERSISTENT_DEF_LAYER": 0x999a0,  # Reserve 0x999a0 - 0x999bf.
-        "QK_REPEAT_KEY": 0x999c0,
-        "QK_ALT_REPEAT_KEY": 0x999c1,
-        "MAGIC_TOGGLE_GUI": 0x999c2,
-
-        "QK_CAPS_WORD_TOGGLE": 0x999e,
-        "QK_LAYER_LOCK": 0x999f,
-        "QK_PERSISTENT_DEF_LAYER": 0x99a0,  # Reserve 0x99a0 - 0x99bf.
-    }
+            # TODO: these should be removed after we can move keycodes to be owned by the Keyboard object and support optional/not implemented keycodes
+            "RM_ON": 0x9990,
+            "RM_OFF": 0x9991,
+            "RM_TOGG": 0x9992,
+            "RM_NEXT": 0x9993,
+            "RM_PREV": 0x9994,
+            "RM_HUEU": 0x9995,
+            "RM_HUED": 0x9996,
+            "RM_SATU": 0x9997,
+            "RM_SATD": 0x9998,
+            "RM_VALU": 0x9999,
+            "RM_VALD": 0x999a,
+            "RM_SPDU": 0x999b,
+            "RM_SPDD": 0x999c,
+            "QK_REBOOT": 0x999d,
+            "QK_CAPS_WORD_TOGGLE": 0x999e,
+            "QK_LAYER_LOCK": 0x999f,
+            "QK_PERSISTENT_DEF_LAYER": 0x999a0,  # Reserve 0x999a0 - 0x999bf.
+            "QK_REPEAT_KEY": 0x999c0,
+            "QK_ALT_REPEAT_KEY": 0x999c1,
+            "MAGIC_TOGGLE_GUI": 0x999c2,
+        }
 
     masked = set()
 
