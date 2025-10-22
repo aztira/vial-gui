@@ -11,6 +11,7 @@ KEYMAPS = [
     ("EurKey (QWERTY)", eurkey.keymap),
     ("French (AZERTY)", french.keymap),
     ("French (MAC)", french.keymap_mac),
+    ("French (BÉPO)", french.keymap_bepo),
     ("German (QWERTZ)", german.keymap),
     ("Hebrew (Standard)", hebrew.keymap),
     ("Hungarian (QWERTZ)", hungarian.keymap),
