@@ -87,24 +87,31 @@ class VialApplicationContext():
         return vial_settings
 
     def get_bundle_dir(self):
+        if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+                    return sys._MEIPASS
         """Calculate the absolute base path of the bundled app"""
         return path.abspath(path.dirname(__file__))
 
     def get_settings_file_names(self):
-        """Read all settings files from the bundled resources/settings dir"""
-        # resources/settings/ is the bundled path set in Vial.spec for source path
-        settings_files_pattern = self.real_path("resources", "settings", "*.json")
-        return glob(settings_files_pattern)
+        files = glob(self.real_path("resources", "settings", "*.json"))
+        if files:
+            return files
+        src_settings = path.abspath(
+            path.join(path.dirname(__file__), "..", "..", "build", "settings", "*.json")
+        )
+        return glob(src_settings)
 
     def real_path(self, *args):
         """Calculate the absolute path of a bundled file"""
         return path.join(self.bundle_dir, *args)
 
     def get_resource(self, file_name):
-        """Implement fsb context's get_resource."""
-        # TODO: FSB Assumed all resources are in the following directory. Maybe
-        #  files should be moved?
-        return self.real_path(os.path.join("resources", "base", file_name))
+        bundled = self.real_path("resources", "base", file_name)
+        if path.exists(bundled):
+            return bundled
+        return path.abspath(
+            path.join(path.dirname(__file__), "..", "resources", "base", file_name)
+        )
 
 
 if __name__ == '__main__':
