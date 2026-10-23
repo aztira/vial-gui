@@ -6,18 +6,25 @@ PI    := $(VENV)/bin/pyinstaller
 APP   := $(ROOT)/dist/Vial.app
 BIN   := $(APP)/Contents/MacOS/Vial
 
-.PHONY: help run app open sign clean check
+.PHONY: help run app open sign clean check venv
 
 help:
+	@echo "make venv   venv anlegen (einmalig / nach Klonen)"
 	@echo "make run    Quellcode starten"
 	@echo "make app    .app bauen, signieren, starten"
 	@echo "make open   App im Finder öffnen"
 	@echo "make sign   nur signieren"
 	@echo "make clean  build/ und dist/ löschen"
 
+venv:
+	python3.12 -m venv "$(VENV)"
+	"$(VENV)/bin/pip" install -U pip
+	"$(VENV)/bin/pip" install -r "$(ROOT)/requirements.txt"
+	"$(VENV)/bin/pip" install pyinstaller
+
 check:
-	@test -x "$(PY)" || { echo "venv fehlt"; exit 1; }
-	@test -x "$(PI)" || { echo "pyinstaller fehlt: pip install pyinstaller"; exit 1; }
+	@test -x "$(PY)" || { echo "venv fehlt → make venv"; exit 1; }
+	@test -x "$(PI)" || { echo "pyinstaller fehlt → make venv"; exit 1; }
 
 run: check
 	$(PY) $(ROOT)/src/main/python/main.py
