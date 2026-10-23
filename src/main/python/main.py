@@ -14,6 +14,14 @@ from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QApplication
 
+from PyQt5.QtCore import qInstallMessageHandler, QtMsgType
+
+def _qt_message_handler(mode, context, message):
+    if message.startswith("QCssParser::parseColorValue"):
+        return
+
+qInstallMessageHandler(_qt_message_handler)
+
 from main_window import MainWindow
 # http://timlehr.com/python-exception-hooks-with-qt-message-box/
 from util import init_logger
