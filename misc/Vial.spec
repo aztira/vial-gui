@@ -28,7 +28,7 @@ exe = EXE(
     console=False,
     disable_windowed_traceback=False,
     argv_emulation=True,
-    target_arch=None,
+    target_arch="arm64",
     codesign_identity=None,
     entitlements_file=None,
     icon=['../src/main/icons/Icon.ico'],
@@ -46,5 +46,5 @@ app = BUNDLE(
     coll,
     name='Vial.app',
     icon='../src/main/icons/Icon.ico',
-    bundle_identifier=None
+    bundle_identifier='today.vial.gui',
 )
