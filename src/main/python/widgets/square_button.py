@@ -8,6 +8,14 @@ class SquareButton(QPushButton):
     def __init__(self, parent=None):
         super().__init__(parent)
 
+        self.setStyleSheet("""
+            QPushButton {
+                text-align: center;
+                padding: 2px 4px;
+                margin: 0px;
+            }
+        """)
+
         self.scale = 1.2
         self.label = None
         self.word_wrap = False
@@ -22,7 +30,9 @@ class SquareButton(QPushButton):
         self.setText(self.text)
 
     def sizeHint(self):
-        size = int(round(self.fontMetrics().height() * self.scale))
+        fm = self.fontMetrics()
+        size = int(round(fm.height() * self.scale * 1.4))
+        size = max(size, 36)
         return QSize(size, size)
 
     # Override setText to facilitate automatic word wrapping
