@@ -36,3 +36,27 @@ source venv/bin/activate
 pyinstaller misc/Vial.spec
 ./dist/Vial/Vial
 ```
+
+## macOS (Apple Silicon)
+
+Native arm64 build, no Rosetta required. Python 3.12 recommended.
+
+```bash
+# one-time setup
+make venv
+
+# run from source
+make run
+
+# build, sign and launch Vial.app
+make app
+```
+
+The Makefile creates the virtualenv, installs dependencies, builds with PyInstaller and ad-hoc signs the app so Gatekeeper allows it to open.
+
+Useful targets:
+
+- `make run` — start from source
+- `make app` — build, sign and launch
+- `make open` — open the built app
+- `make clean` — remove build artifacts
